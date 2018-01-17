@@ -17,6 +17,10 @@ public class AdminCtr {
 	@Autowired 
 	private AdminSvc svc;
 	
+	@RequestMapping("/loginView")
+	public String adminLoginView(Model model, HttpSession session) {
+		return "/admin/adminLogin";
+	}
 	
 	@RequestMapping("/login")
 	public String adminLogin(@RequestParam("id") String id, @RequestParam("pw") String pw, HttpSession session, Model model) {

@@ -25,14 +25,20 @@
 	</style>	
 </head>
 <body>
+	<jsp:include page="/WEB-INF/views/header.jsp" />
 	
 	<form action="login" method="POST" name="loginform">
 		<div id="loginDiv">
-			ID : <input type="text" id="id" name="id" />
+			<h3>관리자 로그인</h3>
 			<br>
-			PW : <input type="text" id="pw" name="pw" />
+			ID &nbsp  <input type="text" id="id" name="id" />
+			<br>
+			<br>
+			PW  <input type="text" id="pw" name="pw" />
+			<br>
 			<br>
 			<button id="loginBtn" type="submit" class="btn btn-default"> Login </button>
+			<button class="btn btn-default"> Back </button>
 		</div>
 	</form>
 	

@@ -17,7 +17,6 @@
 			var trigger = $("#trigger");
 			var menu = $("nav ul");
 			$(trigger).on('click', function(e){
-				e.preventDefault();
 				menu.slideToggle();
 			});
 			
@@ -175,21 +174,11 @@
 			<li><a href="#">ABOUT</a></li>
 			<li><a href="#">MAKING</a></li>
 			<li><a href="#">GUESTS</a></li>
-			<li><a href="#">ADMIN</a></li>
+			<li><a href="/home/loginView">ADMIN</a></li>
 		</ul>
 		<span id="trigger"><span class="glyphicon glyphicon-align-justify" aria-hidden="true">&nbsp MENU</span></span>
 		
 	</nav>
-	
-	<!-- <div id="topMenu">
-		<nav>
-			<button id="loginBtn" class="btn btn-default">Login</button>
-			<button id="logoutBtn" class="btn btn-default">Logout</button>
-		</nav>
-		
-		<div id="" class="jumbotron"></div>	
-	</div> -->
-	
 
 </body>
 </html>
