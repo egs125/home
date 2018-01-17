@@ -23,7 +23,7 @@
 			$(window).resize(function(){
 				var w = $(window).width();
 				if(w > 320 && menu.is(":hidden")){
-					menu.removeAttr("style");
+					//menu.removeAttr("style");
 				}
 			});
 		});
@@ -42,7 +42,7 @@
 		}
 		
 		.clearfix {
-			zooom : 1;
+			zoom : 1;
 		}
 			
 		nav {
@@ -150,7 +150,6 @@
 				background-color : #283744;
 				width : 100%;
 				position : relative;
-				cursor : hand;
 			}
 			
 			nav #trigger : after {
@@ -162,7 +161,6 @@
 				right : 15px;
 				top : 10px;
 			}
-		
 		}
 	</style>
 </head>
@@ -176,8 +174,7 @@
 			<li><a href="#">GUESTS</a></li>
 			<li><a href="/home/loginView">ADMIN</a></li>
 		</ul>
-		<span id="trigger"><span class="glyphicon glyphicon-align-justify" aria-hidden="true">&nbsp MENU</span></span>
-		
+		<a href="#" id="trigger">MENU</a>
 	</nav>
 
 </body>

@@ -6,22 +6,23 @@
 	<meta charset="UTF-8">
 	<title>My Home</title>
 
-	<!-- <link rel="stylesheet" type="text/css" href="/blog/resources/css/home.css" /> -->
-	<script src="/home/resources/js/jquery-3.2.1.min.js"></script>
-	
 	<!-- 부트스트랩 -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
+	<script src="/home/resources/js/jquery-3.2.1.min.js"></script>
+		
 	<style>
 		#loginDiv
 		{
 			padding : 5%;
 		}
 		
-		
-	
+		#loginDiv input 
+		{
+			width : 40%;
+		}
 	</style>	
 </head>
 <body>
@@ -31,14 +32,20 @@
 		<div id="loginDiv">
 			<h3>관리자 로그인</h3>
 			<br>
-			ID &nbsp  <input type="text" id="id" name="id" />
+			<div class="input-group input-group-lg">
+				<span class="input-group-addon" id="sizing-addon1">ID &nbsp </span>
+			  	<input name="id" type="text" class="form-control" aria-describedby="sizing-addon1" required style="width:40%;">
+			</div>		
+			<div class="input-group input-group-lg">
+				<span class="input-group-addon" id="sizing-addon1">PW</span>
+			  	<input name="pw" type="password" class="form-control" aria-describedby="sizing-addon1" required style="width:40%;">
+			</div>
 			<br>
 			<br>
-			PW  <input type="text" id="pw" name="pw" />
-			<br>
-			<br>
-			<button id="loginBtn" type="submit" class="btn btn-default"> Login </button>
-			<button class="btn btn-default"> Back </button>
+			
+			<button class="btn btn-primary" type="submit"> Login</button>
+			&nbsp;&nbsp;&nbsp;
+			<button class="btn btn-default" onclick="history.go(-1)">Back</button>
 		</div>
 	</form>
 	

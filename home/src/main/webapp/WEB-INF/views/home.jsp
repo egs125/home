@@ -17,15 +17,17 @@
 	<style>
 		body {
 			background-color: #cccccc;
-			background-image: url("/src/main/webapp/resources/img/home.jpg");
-   			
+			background-image: url("/home/resources/img/home.jpg");
+   			background-position : center center;
+   			background-attachment: fixed;
+   			background-repeat : no-repeat;
+   			background-size : cover;
 		}
 	
 	</style>
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
-	
 	<div id="main">
 	
 	</div>
