@@ -1,5 +1,6 @@
 package com.blog.home.admin.ctr;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -36,5 +37,15 @@ public class AdminCtr {
 		}else {
 			return "fail";
 		}
+	}
+	
+	@RequestMapping("/logout")
+	public String logout(HttpSession session, HttpServletRequest request ){
+		session = request.getSession(false);		
+		if(session != null) {
+			session.invalidate();
+			System.out.println("로그아웃 처리 완료");
+		}
+		return "home";
 	}
 }

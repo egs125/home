@@ -13,169 +13,137 @@
 	
 	<script src="/home/resources/js/jquery-3.2.1.min.js"></script>
 	<script>
-		$(function(){
-			var trigger = $("#trigger");
-			var menu = $("nav ul");
-			$(trigger).on('click', function(e){
-				menu.slideToggle();
-			});
-			
-			$(window).resize(function(){
-				var w = $(window).width();
-				if(w > 320 && menu.is(":hidden")){
-					//menu.removeAttr("style");
-				}
-			});
-		});
 	
+	$(function(){
+		//OPEN 클릭 시 사이드메뉴 펼침
+		$("#topBar span").on("click", function(){
+			$("#sideNav").attr("style", "width:250px");
+			$("#main").attr("style", "margin-left:250px");
+		});
+		
+		//사이드메뉴의 X 버튼 클릭 시 사이드메뉴 접음
+		$("#sideNav span").on("click", function(){
+			$("#sideNav").attr("style", "width:0");
+			$("#main").attr("style", "margin-left:0");
+		});
+		
+		//로그인 버튼 클릭 시
+		$("#login").on("click", function(){
+			var choice = confirm("관리자로 로그인하시겠습니까?");
+			if(choice == true){
+				location.href = "loginView";
+			}else{
+				return false;
+			}
+		});
+		
+		//로그아웃 버튼 클릭 시
+		$("#logout").on("click", function(){
+			var choice = confirm("정말로 로그아웃하시겠습니까?");
+			if(choice == true){
+				location.href = "logout";
+			}else{
+				return false;
+			}				
+		});	
+	});
+		
 	</script>
 	
 	<style>
-		.clearfix : before,
-		.clearfix : after {
-			content : " ";
-			display : table;
+		.sidenav {
+		    height: 100%;
+		    width: 0;
+		    position: fixed;
+		    z-index: 100;
+		    top: 0;
+		    left: 0;
+		    background-color: #111;
+		    overflow-x: hidden;
+		    transition: 0.5s;
+		    padding-top: 60px;
 		}
 		
-		.clearfix : after {
-			clear : both;
+		.sidenav a {
+		    padding: 8px 8px 8px 32px;
+		    text-decoration: none;
+		    font-size: 25px;
+		    color: #818181;
+		    display: block;
+		    transition: 0.3s;
 		}
 		
-		.clearfix {
-			zoom : 1;
+		.sidenav a:hover {
+		    color: #f1f1f1;
+		}
+		
+		.sidenav .closebtn {
+		    position: absolute;
+		    top: 0;
+		    right: 25px;
+		    font-size: 36px;
+		    margin-left: 50px;
+		    cursor : pointer;
 		}
 			
-		nav {
-			height : 40px;
+		#topBar {
 			width : 100%;
-			background : #34495e;
-			font-size : 1em;
-			font-family : Arial, sans-serif;
+			height: 40px;
+			background-color : black;
 			font-weight : bold;
-			position : relative;
-			border-bottom : 2px soild #34495e;
 		}
 		
-		nav ul {
-			width : 600px;
+		#topBar span {
+			font-size : 30px;
+			cursor : pointer;
+			color : #f1f1f1;
+		}
+		
+		#admin {
+			float : right;
+			color : #f1f1f1;
+		}
+		
+		#admin button {
+			margin : 0 auto;
+			border : 1px solid #f1f1f1;
+			background-color : black;
+			color : #f1f1f1;
 			height : 40px;
+			width : 70px;
 		}
 		
-		nav li {
-			display : inline;
-			float : left;
-		}
-	
-		nav a, nav span {
-			color : #fff;
-			display : inline-block;
-			width : 100px;
-			text-align : center;
-			text-decoration : none;
-			line-height : 40px;
-			text-shadow : 1px 1px 0px #283744;
-		}
-		
-		nav li a {
-			border-right : 1px solid #576979;
-			box-sizing : border-box;
-			-moz-box-sizing : border-box;
-			-webkit-box-sizing : border-box;
-		}
-		
-		nav li:last-chilld a {
-			border-right : 0;
-		}
-		
-		nav a:hover, nav a:active, nav span {
-			background-coloor : #2c3e50;
-		}
-		
-		nav #trigger {
-			display : none;	
-		}
-		
-		
-		@media screen and (max-width : 600px) {
-			nav {
-				height : auto;
-			}
-			
-			nav ul {
-				width : 100%;
-				display : block;
-				height : auto;
-			}
-			
-			nav li {
-				width : 50%;
-				float : left;
-				position : relative;
-			}
-			
-			nav li a {
-				border-bottom : 1px solid #576979;
-				border-right : 1px solid #576979;
-			}
-			
-			nav a {
-				text-align : left;
-				width : 100%;
-				text-indent : 25px;
-			}
-		}
-		
-		@media screen and (max-width : 320px) {
-			nav {
-				border-bottom : 0;
-			}
-			
-			nav ul {
-				display : none;
-				height : auto;
-			}
-			
-			nav li {
-				display : block;
-				float : none;
-				width : 100%;
-			}
-			
-			nav li a {
-				border-bottom : 1px solid #576979;
-			}
-			
-			nav #trigger {
-				display : block;
-				background-color : #283744;
-				width : 100%;
-				position : relative;
-			}
-			
-			nav #trigger : after {
-				content : "";
-				width : 30px;
-				height : 30px;
-				display : inline-block;
-				position : absolute;
-				right : 15px;
-				top : 10px;
-			}
+		@media screen and (max-height: 450px) {
+		  .sidenav {padding-top: 15px;}
+		  .sidenav a {font-size: 18px;}
 		}
 	</style>
 </head>
 <body>
 
-	<nav class="clearfix">
-		<ul class="clearfix">
-			<li><a href="#">HOME</a></li>
-			<li><a href="#">ABOUT</a></li>
-			<li><a href="#">MAKING</a></li>
-			<li><a href="#">GUESTS</a></li>
-			<li><a href="/home/loginView">ADMIN</a></li>
-		</ul>
-		<a href="#" id="trigger">MENU</a>
-	</nav>
-
+	<div id="sideNav" class="sidenav">
+	  <span class="closebtn">&times;</span>
+	  <a href="/home">HOME</a>
+	  <a href="#">ABOUT</a>
+	  <a href="#">MAKINGS</a>
+	  <a href="#">GUESTS</a>
+	</div>
+	
+	<div id="topBar">
+		<span> &#9776; MENU</span>
+		
+		<div id="admin">
+		<c:choose>
+			<c:when test="${admin ne null }">
+				Welcome back ${admin} ! &nbsp&nbsp&nbsp <button id="logout">Logout</button>
+			</c:when>
+			<c:otherwise>
+				<button id="login" >LOGIN</button>
+			</c:otherwise>
+		</c:choose>
+			
+		</div>		
+	</div>
+	
 </body>
 </html>

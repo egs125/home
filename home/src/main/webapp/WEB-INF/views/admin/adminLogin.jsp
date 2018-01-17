@@ -12,22 +12,20 @@
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
 	<script src="/home/resources/js/jquery-3.2.1.min.js"></script>
+	<script>
+		$(function(){
+			
+		});
+	</script>
 		
 	<style>
-		#loginDiv
-		{
-			padding : 5%;
-		}
+		#loginDiv{padding : 5%;}
 		
-		#loginDiv input 
-		{
-			width : 40%;
-		}
+		#loginDiv input {width : 40%;}
 	</style>	
 </head>
 <body>
-	<jsp:include page="/WEB-INF/views/header.jsp" />
-	
+		
 	<form action="login" method="POST" name="loginform">
 		<div id="loginDiv">
 			<h3>관리자 로그인</h3>
@@ -47,6 +45,7 @@
 			&nbsp;&nbsp;&nbsp;
 			<button class="btn btn-default" onclick="history.go(-1)">Back</button>
 		</div>
+		<input type="hidden" id="location" value="login"/>
 	</form>
 	
 </body>
