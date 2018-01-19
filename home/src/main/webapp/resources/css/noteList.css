@@ -1,0 +1,9 @@
+@charset "UTF-8";
+
+#main {
+	text-align : center;
+}
+
+#tablePanel, #paging {
+	display : inline-block;
+}

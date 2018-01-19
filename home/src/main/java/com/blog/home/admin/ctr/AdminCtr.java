@@ -12,7 +12,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import com.blog.home.admin.svc.AdminSvc;
 import com.blog.home.admin.vo.AdminVO;
 
-@Controller
+@RequestMapping("/admin")
+@Controller("adminCtr")
 public class AdminCtr {
 
 	@Autowired 

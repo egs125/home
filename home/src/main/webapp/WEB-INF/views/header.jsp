@@ -31,7 +31,7 @@
 		$("#login").on("click", function(){
 			var choice = confirm("관리자로 로그인하시겠습니까?");
 			if(choice == true){
-				location.href = "loginView";
+				location.href = "/home/admin/loginView";
 			}else{
 				return false;
 			}
@@ -41,7 +41,7 @@
 		$("#logout").on("click", function(){
 			var choice = confirm("정말로 로그아웃하시겠습니까?");
 			if(choice == true){
-				location.href = "logout";
+				location.href = "/home/admin/logout";
 			}else{
 				return false;
 			}				
@@ -125,12 +125,13 @@
 	  <span class="closebtn">&times;</span>
 	  <a href="/home">HOME</a>
 	  <a href="#">ABOUT</a>
-	  <a href="#">MAKINGS</a>
+	  <a href="/home/note/noteListView">MAKINGS</a>
 	  <a href="#">GUESTS</a>
 	</div>
 	
 	<div id="topBar">
-		<span> &#9776; MENU</span>
+		<span> &#9776;</span>
+		<span class="glyphicon glyphicon-apple">DORONG DOG FOOT</span>
 		
 		<div id="admin">
 		<c:choose>
