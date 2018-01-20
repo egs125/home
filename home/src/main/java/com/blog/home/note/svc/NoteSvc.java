@@ -12,6 +12,8 @@ public interface NoteSvc {
 
 	NoteVO retrieveNote(String sn);
 
+	int writeNote(NoteVO vo);
+
 
 
 }

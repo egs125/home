@@ -16,12 +16,18 @@
 	<script src="/home/resources/js/jquery-3.2.1.min.js"></script>
 	<script src="/home/resources/js/note/noteList.js"></script>
 	
+	<link rel="stylesheet" href="/home/resources/css/noteList.css">
+	
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	
-	<div id="main">
+	<div id="location" class="jumbotron">
+		<h2>MAKING NOTES</h2>
+		<h4> - How to make this website</h4>
+	</div>
 	
+	<div id="main">
 		<div id="tablePanel" class="panel panel-default">
 		<table class="table">
 			<tr id="head">
@@ -31,8 +37,13 @@
 			</tr>
 		</table>
 		</div>
-		
-		<br><br>
+		<br>
+		<c:if test="${admin ne null }">
+		<div id="btn">
+			<button id="toWrite" class="btn btn-default">Write</button>
+		</div>
+		</c:if>
+		<br>
 		
 		<div id="paging">
 		<nav>

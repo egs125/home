@@ -1,0 +1,33 @@
+@charset "UTF-8";
+
+#location {
+	font-weight : bold;
+	padding : 5%;
+} 
+
+#main {
+	padding : 0 5% 0 5%;
+}
+
+#reading {
+	display : block;
+	
+}
+
+#noteTitle {
+	display : block;
+	font-weight : bold;
+	text-decoration: underline;
+	text-shadow : 1px 1px #87837e;
+}
+
+#noteContents {
+	display : block;
+	background-color : #eef2f2;
+	height : 500px;
+}
+
+#btns {
+	display :block;
+	text-align : center;
+}

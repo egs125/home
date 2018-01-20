@@ -3,6 +3,9 @@
  */
 $(function(){
 	
+	$("#toWrite").click(function(){
+		location.href="/home/note/writeNoteView";
+	});
 	//getPaging();
 	
 	getNoteList();

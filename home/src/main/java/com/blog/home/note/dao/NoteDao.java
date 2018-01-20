@@ -26,4 +26,8 @@ public class NoteDao {
 	public NoteVO retrieveNote(String sn) {
 		return sql.selectOne(NAMESPACE + "retrieveNote", sn);
 	}
+
+	public int writeNote(NoteVO vo) {
+		return sql.insert(NAMESPACE + "writeNote", vo);
+	}
 }

@@ -16,31 +16,37 @@
 	<script src="/home/resources/js/jquery-3.2.1.min.js"></script>
 	<script src="/home/resources/js/note/readNote.js"></script>
 	
+	<link rel="stylesheet" href="/home/resources/css/readNote.css">
 </head>
 <body>
 	<jsp:include page="/WEB-INF/views/header.jsp" />
 	
-	<div class="jumbotron">
-		READ NOTE
+	<div id="location" class="jumbotron">
+		<h2>READ NOTES</h2>
+		<h4> - How to make this website</h4>
 	</div>
-	<%-- <input type="text" id="sn" value="${sn}"> --%>
 	<div id="main">
-		<div id="editor">
-			${vo.sn}
+		<div id="reading">
+			
+			<input type="text" id="sn" value="${vo.sn}">
 			<br>
-			${vo.title }
+			<div id="noteTitle">
+				<h4>${vo.title}</h4>
+			</div>
+			
 			<br>
-			${vo.contents }		
+			<div id="noteContents">
+			${vo.contents }	
+			</div>
+				
 		</div>
+		<br><br>
+		<div id="btns">
 		
-		<div id="btns" align="right">
-		
-			<input class="btn btn-default" type="button" value="Write" onclick="history.go(-1)">
+			<input class="btn btn-default" type="button" value="Update" id="toWrite">
 			&nbsp;&nbsp;&nbsp;
-			<input class="btn btn-default" type="button" value="취소" onclick="history.go(-1)">
-			<!-- <input class="btn btn-default" type="button" value="저장" id="save">
-			&nbsp;&nbsp;&nbsp;
-			<input class="btn btn-default" type="button" value="취소" onclick="history.go(-1)">	 -->
+			<input class="btn btn-default" type="button" value="Back" onclick="history.go(-1)">
+
 		</div>
 	</div>
 	

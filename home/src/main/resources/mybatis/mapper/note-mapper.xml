@@ -6,6 +6,7 @@
   	<resultMap id="note" type="note">
   		<id property="sn" column="sn" />
 		<result property="title" column="title" />
+		<result property="contents" column="contents" />
 		<result property="insert_dt" column="insert_dt" />
 		<result property="update_dt" column="update_dt" />
 		<result property="delete_at" column="delete_at" />
@@ -20,19 +21,55 @@
   	
   	<!-- 게시물 조회 -->
 	<select id="getNoteList" resultType="note">
-		SELECT *
+		SELECT SN,
+			   TITLE,
+			   CONTENTS,
+			   SUBSTRING(INSERT_DT, 1, 10) AS INSERT_DT
 		  FROM NOTE
 		 WHERE DELETE_AT = 'N'
 	</select>
 	
 	<!-- 게시물 상세 조회 -->
 	<select id="retrieveNote" parameterType="java.lang.String" resultType="note">
-		SELECT * 
+		SELECT SN,
+			   TITLE,
+			   CONTENTS 
 		  FROM NOTE
 		 WHERE SN = #{sn}
 		   AND DELETE_AT = 'N'
 	</select>
 	
+	<!-- 새 글 작성 -->
+	<insert id="writeNote" parameterType="note">
+		<!-- INSERT INTO NOTE
+		VALUES 
+		(
+			(SELECT LPAD(MAX(SN) + 1, '5', '0') AS SN
+			   FROM NOTE AS TB_TEMP),
+			#{title},
+			#{contents},
+			NOW(),
+			NOW(),
+			'N'   
+		)	 -->	
+		INSERT INTO NOTE
+		VALUES
+		(
+			(SELECT LPAD(MAX(SN) + 1, '5', '0') AS SN
+			   FROM NOTE AS TB_TEMP),
+			#{title},
+			#{contents},
+			NOW(),
+			NOW(),
+			'N'   
+		)
+		ON DUPLICATE KEY
+		
+		UPDATE
+		TITLE = #{title},
+		CONTENTS = #{contents},
+		UPDATE_DT = NOW()		
+	</insert>
 	
   	<!-- <resultMap id="memberResult" type="aMember">
 		<id property="memberId" column="mb_id" />

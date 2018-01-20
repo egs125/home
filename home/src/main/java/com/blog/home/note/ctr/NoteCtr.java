@@ -49,14 +49,39 @@ public class NoteCtr {
 		return list;
 	}
 	
+	//게시물 상세 데이터 조회
 	@RequestMapping("/readNote")
 	public String readNoteView(HttpSession session, Model model, @RequestParam(value="sn") String sn) throws Exception {
-		System.out.println("################");
-		System.out.println("readNote");
-		System.out.println("################");
-		System.out.println(sn);
 		NoteVO vo = svc.retrieveNote(sn);
 		model.addAttribute("vo", vo);
+		return "/note/readNote";
+	}
+	
+	//게시물 작성 화면
+	@RequestMapping("/writeNoteView")
+	public String writeNoteView(HttpSession session, Model model, @RequestParam(value="sn", defaultValue="null") String sn) throws Exception {
+		if(null != sn) {
+			NoteVO vo = svc.retrieveNote(sn);
+			model.addAttribute("vo", vo);
+		}
+		return "note/writeNote";
+	}
+	/*public String writeNoteView(Model model, @RequestParam(value="sn") String sn) throws Exception {
+		System.out.println("###########");
+		System.out.println("writeNoteView");
+		System.out.println("###########");
+
+		if(null != sn) {
+			NoteVO vo = svc.retrieveNote(sn);
+			model.addAttribute("vo", vo);
+		}
+		return "note/writeNote";
+	}*/
+	
+	//게시물 입력
+	@RequestMapping("/writeNote")
+	public String writeNote(HttpSession session, Model model, NoteVO vo) throws Exception {
+		int result = svc.writeNote(vo);
 		return "/note/readNote";
 	}
 	

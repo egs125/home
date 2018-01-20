@@ -29,4 +29,9 @@ public class NoteSvcImpl implements NoteSvc{
 		return dao.retrieveNote(sn);
 	}
 
+	@Override
+	public int writeNote(NoteVO vo) {
+		return dao.writeNote(vo);
+	}
+
 }

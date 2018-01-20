@@ -1,9 +1,39 @@
 @charset "UTF-8";
 
+#location {
+	font-weight : bold;
+	padding : 5%;
+} 
+
 #main {
 	text-align : center;
 }
 
-#tablePanel, #paging {
+#tablePanel {
 	display : inline-block;
+	margin : 0 auto;
+	height : auto;
+	width : 80%;
+}
+
+#tablePanel th {
+	text-align : center;
+}
+
+#tablePanel td:first-child, th:first-child{
+	width : 10%;
+}
+
+#tablePanel th:first-child + th, td:first-child + td {
+	text-align : left;
+	margin-left : 2em;
+}
+
+#tablePanel td:nth-child(3) {
+	width : 15%;	
+}
+
+#paging {
+	display : inline-block;
+	margin : 0 auto;
 }
