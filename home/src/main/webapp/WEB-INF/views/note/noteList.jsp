@@ -44,7 +44,9 @@
 		</div>
 		</c:if>
 		<br>
-		
+		<div id="loading">
+			<img src="/home/resources/img/loader.gif" />
+		</div>
 		<div id="paging">
 		<nav>
 			<ul class="pagination">

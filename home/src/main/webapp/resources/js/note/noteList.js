@@ -25,9 +25,7 @@ function getPaging(){
 		type : "get",
 		/* data : {page : count, code : code}, */
 		dataType : "json",
-		/* beforeSend : function(){
-			$(".when_load_data").css('display', 'block');
-		}, */
+		
 		success : function(data){
 			console.log("getPaging : success");
 			/* var result = "";
@@ -47,8 +45,10 @@ function getPaging(){
 		},
 		error : function(e){
 			console.log("getPaging : error");
-		}
-		
+		},
+		complete : function(e){
+			$("#loading img").css('display', 'none');
+		}	
 		
 	});
 }
@@ -63,9 +63,9 @@ function getNoteList(){
 		type : "get",
 		/* data : {page : count, code : code}, */
 		dataType : "json",
-		/* beforeSend : function(){
-			$(".when_load_data").css('display', 'block');
-		}, */
+		beforeSend : function(){
+			$("#loading img").css("display", "inline-block");
+		}, 
 		success : function(data){
 			console.log("getNoteList : success");
 			var result = "";
@@ -84,6 +84,9 @@ function getNoteList(){
 		},
 		error : function(e){
 			console.log("getNoteList :error");
+		},
+		complete : function(e){
+			$("#loading img").css("display", "none");
 		}		
 	});
 }
