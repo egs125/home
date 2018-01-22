@@ -8,13 +8,13 @@ $(function(){
     $("#writeBtn").on("click", function(){
     	
     	 var params = {
+    		  sn    : $("#sn").val(),
               title : $("#title").val(),
               contents : CKEDITOR.instances.contents.getData()
          };
-          
-         //ajax 호출
+ 
          $.ajax({
-             url         :   "writeNote",
+             url         :   "updateNote",
              type        :   "post",
              data        :   params,
              success     :   function(data){ 

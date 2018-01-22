@@ -7,14 +7,14 @@
 	<title>My Home</title>
 
 	<!-- <link rel="stylesheet" type="text/css" href="/blog/resources/css/home.css" /> -->
-	
+	<script type="text/javascript" src="/home/resources/js/jquery-3.2.1.min.js"></script>
 	
 	<!-- 부트스트랩 -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
-	<script src="/home/resources/js/jquery-3.2.1.min.js"></script>
+	
 		
 	<style>
 		 body {

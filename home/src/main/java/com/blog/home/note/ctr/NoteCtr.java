@@ -51,38 +51,59 @@ public class NoteCtr {
 	
 	//게시물 상세 데이터 조회
 	@RequestMapping("/readNote")
-	public String readNoteView(HttpSession session, Model model, @RequestParam(value="sn") String sn) throws Exception {
+	public String readNoteView(Model model, @RequestParam(value="sn") String sn) throws Exception {
 		NoteVO vo = svc.retrieveNote(sn);
 		model.addAttribute("vo", vo);
 		return "/note/readNote";
 	}
 	
+	//게시물 수정 화면으로 이동
+	@RequestMapping("/updateNoteView")
+	public String updateNoteView(HttpSession session, Model model, @RequestParam(value="sn") String sn) throws Exception {
+		NoteVO vo = svc.retrieveNote(sn);
+		model.addAttribute("vo", vo);
+		return "/note/updateNote";
+	}
+	
+	//게시물 수정
+	@RequestMapping("/updateNote")
+	public @ResponseBody String updateNote(Model model, NoteVO vo) throws Exception {			
+		String rtn = "";
+		int result = svc.updateNote(vo);
+		
+		if(result > 0) rtn = "Your note is updated!";
+		else 		   rtn = "Your note cannot be updated";
+		
+		return rtn;
+	}
+	
+	@RequestMapping("/deleteNote")
+	public String deleteNote(@RequestParam(value="sn") String sn) throws Exception {
+		String rtn = "";
+		int result = svc.deleteNote(sn);
+		
+		if(result > 0) rtn =  "/note/noteList";
+		else 		   rtn = "fail";
+		
+		return rtn;
+	}
+	
 	//게시물 작성 화면
 	@RequestMapping("/writeNoteView")
-	public String writeNoteView(HttpSession session, Model model, @RequestParam(value="sn", defaultValue="null") String sn) throws Exception {
-		if(null != sn) {
-			NoteVO vo = svc.retrieveNote(sn);
-			model.addAttribute("vo", vo);
-		}
-		return "note/writeNote";
+	public String writeNoteView(HttpSession session, Model model) throws Exception {
+		return "/note/writeNote";
 	}
-	/*public String writeNoteView(Model model, @RequestParam(value="sn") String sn) throws Exception {
-		System.out.println("###########");
-		System.out.println("writeNoteView");
-		System.out.println("###########");
-
-		if(null != sn) {
-			NoteVO vo = svc.retrieveNote(sn);
-			model.addAttribute("vo", vo);
-		}
-		return "note/writeNote";
-	}*/
 	
 	//게시물 입력
 	@RequestMapping("/writeNote")
-	public String writeNote(HttpSession session, Model model, NoteVO vo) throws Exception {
+	public @ResponseBody String writeNote(HttpSession session, Model model, NoteVO vo) throws Exception {
+		String rtn = "";
 		int result = svc.writeNote(vo);
-		return "/note/readNote";
+		
+		if(result > 0) rtn = "New Note is saved!";
+		else  		   rtn = "New Note cannot be saved";
+		
+		return rtn;
 	}
 	
 }

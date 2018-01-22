@@ -8,12 +8,13 @@
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>My Home</title>
 	
+	<script type="text/javascript" src="/home/resources/js/jquery-3.2.1.min.js"></script>
+	
 	<!-- 부트스트랩 -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 	
-	<script type="text/javascript" src="/home/resources/js/jquery-3.2.1.min.js"></script>
 	<script src="/home/resources/js/note/writeNote.js"></script>
 	
 	<link rel="stylesheet" href="/home/resources/css/writeNote.css">
@@ -36,7 +37,7 @@
 
 			<div class="input-group input-group-lg">
 				<span class="input-group-addon" id="sizing-addon1">Title </span>
-			  	<input name="title" type="text" class="form-control" aria-describedby="sizing-addon1" required style="width:100%;">
+			  	<input name="title" id="title" type="text" class="form-control" aria-describedby="sizing-addon1" required style="width:100%;">
 			</div>	
 			<br>
 			<textarea name="contents" id="contents" rows="10"></textarea>		

@@ -41,7 +41,7 @@
 	
 	<!-- 새 글 작성 -->
 	<insert id="writeNote" parameterType="note">
-		<!-- INSERT INTO NOTE
+		INSERT INTO NOTE
 		VALUES 
 		(
 			(SELECT LPAD(MAX(SN) + 1, '5', '0') AS SN
@@ -51,8 +51,8 @@
 			NOW(),
 			NOW(),
 			'N'   
-		)	 -->	
-		INSERT INTO NOTE
+		)		
+		<!-- INSERT INTO NOTE
 		VALUES
 		(
 			(SELECT LPAD(MAX(SN) + 1, '5', '0') AS SN
@@ -68,9 +68,25 @@
 		UPDATE
 		TITLE = #{title},
 		CONTENTS = #{contents},
-		UPDATE_DT = NOW()		
+		UPDATE_DT = NOW()	 -->	
 	</insert>
 	
+	<!-- 게시물 삭제 -->
+	<update id="deleteNote" parameterType="java.lang.String">
+		UPDATE NOTE
+		   SET UPDATE_DT = NOW(),
+		   	   DELETE_AT = 'Y'
+		 WHERE SN = #{sn}
+	</update>
+	
+	<!-- 게시물 수정 -->
+	<update id="updateNote" parameterType="note">
+		UPDATE NOTE
+		   SET TITLE = #{title},
+		   	   CONTENTS = #{contents},
+		   	   UPDATE_DT = NOW()	   	   	
+		 WHERE SN = #{sn} 
+	</update>
   	<!-- <resultMap id="memberResult" type="aMember">
 		<id property="memberId" column="mb_id" />
 		<result property="memberPwd" column="mb_pwd" />

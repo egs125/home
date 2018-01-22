@@ -7,13 +7,14 @@
 <head>
 	<meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	<title>My Home</title>
+
+	<script type="text/javascript" src="/home/resources/js/jquery-3.2.1.min.js"></script>	
 	
 	<!-- 부트스트랩 -->
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap-theme.min.css">
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-	
-	<script src="/home/resources/js/jquery-3.2.1.min.js"></script>
+
 	<script src="/home/resources/js/note/readNote.js"></script>
 	
 	<link rel="stylesheet" href="/home/resources/css/readNote.css">
@@ -28,10 +29,10 @@
 	<div id="main">
 		<div id="reading">
 			
-			<input type="text" id="sn" value="${vo.sn}">
+			<input type="hidden" id="sn" value="${vo.sn}">
 			<br>
 			<div id="noteTitle">
-				<h4>${vo.title}</h4>
+				${vo.title}
 			</div>
 			
 			<br>
@@ -44,6 +45,8 @@
 		<div id="btns">
 		
 			<input class="btn btn-default" type="button" value="Update" id="toWrite">
+			&nbsp;&nbsp;&nbsp;
+			<input class="btn btn-default" type="button" value="Delete" id="delBtn">
 			&nbsp;&nbsp;&nbsp;
 			<input class="btn btn-default" type="button" value="Back" onclick="history.go(-1)">
 

@@ -30,4 +30,12 @@ public class NoteDao {
 	public int writeNote(NoteVO vo) {
 		return sql.insert(NAMESPACE + "writeNote", vo);
 	}
+
+	public int deleteNote(String sn) {
+		return sql.update(NAMESPACE + "deleteNote", sn);
+	}
+
+	public int updateNote(NoteVO vo) {
+		return sql.update(NAMESPACE + "updateNote", vo);
+	}
 }

@@ -34,4 +34,14 @@ public class NoteSvcImpl implements NoteSvc{
 		return dao.writeNote(vo);
 	}
 
+	@Override
+	public int deleteNote(String sn) {
+		return dao.deleteNote(sn);
+	}
+
+	@Override
+	public int updateNote(NoteVO vo) {
+		return dao.updateNote(vo);
+	}
+
 }

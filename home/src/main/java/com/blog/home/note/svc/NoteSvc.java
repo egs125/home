@@ -14,6 +14,10 @@ public interface NoteSvc {
 
 	int writeNote(NoteVO vo);
 
+	int deleteNote(String sn);
+
+	int updateNote(NoteVO vo);
+
 
 
 }
