@@ -18,7 +18,8 @@ $(function(){
              type        :   "post",
              data        :   params,
              success     :   function(data){ 
-            	 alert(data);                
+            	 alert(data); 
+            	 location.href = "/home/note/noteListView";
              },
              error       :   function(data){
             	 alert(data); 

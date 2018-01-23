@@ -34,7 +34,6 @@
 	<div id="main">
 		<div id="writing">
 			<form action="writeNote" method="POST" name="newNoteForm">
-
 			<div class="input-group input-group-lg">
 				<span class="input-group-addon" id="sizing-addon1">Title </span>
 			  	<input name="title" id="title" type="text" class="form-control" aria-describedby="sizing-addon1" required style="width:100%;">

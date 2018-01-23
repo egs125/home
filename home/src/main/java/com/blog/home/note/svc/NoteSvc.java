@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.blog.home.note.vo.NoteVO;
 
+import common.vo.PagingVO;
+
 public interface NoteSvc {
 
 	List<NoteVO> getNoteList();

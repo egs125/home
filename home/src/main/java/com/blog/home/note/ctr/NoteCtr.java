@@ -1,6 +1,7 @@
 package com.blog.home.note.ctr;
 
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
@@ -25,27 +26,32 @@ public class NoteCtr {
 	private NoteSvc svc;
 	
 	@RequestMapping("/noteListView")
-	public String noteListView(Model model, HttpSession session) {
+	public String noteListView(Model model) {
 		return "/note/noteList";
 	}
 	
-	//페이징 네비게이션 바 
-	@RequestMapping("/getPaging")
-	public @ResponseBody PagingVO getPagingNav(HttpSession session,
-											   @RequestParam(value="page", defaultValue="1") int page) throws Exception {
-		PagingVO vo = new PagingVO();
-		vo.setTotalCount(svc.getTotalCount());
-		vo.setPageSize(10);
-		vo.setPageNo(page);
-		vo.setBlockSize(10);
-	
+	//페이징
+	public PagingVO getPagingVO(int curPage) {
+		int totalCount = svc.getTotalCount();
+		PagingVO vo = new PagingVO(totalCount, curPage);
 		return vo;
-	}
+	} 
 	
 	//게시물 목록 
 	@RequestMapping("/getNoteList")
-	public @ResponseBody List<NoteVO> getNoteList(HttpSession session/*, int page*/) throws Exception {
+	public @ResponseBody List<NoteVO> getNoteList(Model model, @RequestParam Map<String, Integer> param) throws Exception {
+		System.out.println("########################");
+		System.out.println("curPage : " + param.get("curPage"));
+		Object obj = param.get("curPage");
+		System.out.println(obj.getClass().getName());
+		
+		int page = Integer.valueOf((String) obj);
+		
+		System.out.println("########################");
+		///int curPage =  Integer.valueOf(param.get("curPage"));
+		PagingVO vo = this.getPagingVO(page);
 		List<NoteVO> list = svc.getNoteList();
+		//model.addAttribute("paging", vo);
 		return list;
 	}
 	

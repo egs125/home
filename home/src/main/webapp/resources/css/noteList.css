@@ -43,3 +43,7 @@
 	display : inline-block;
 	margin : 0 auto;
 }
+
+.pagination li : hover{
+	cursor : hand;
+}

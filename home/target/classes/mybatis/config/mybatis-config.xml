@@ -6,5 +6,6 @@
   	<typeAliases>
   		<typeAlias type="com.blog.home.admin.vo.AdminVO" alias="admin"/>
   		<typeAlias type="com.blog.home.note.vo.NoteVO" alias="note"/>
+  		<typeAlias type="common.vo.PagingVO" alias="paging" />
   	</typeAliases>
   </configuration>

@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 import com.blog.home.note.dao.NoteDao;
 import com.blog.home.note.vo.NoteVO;
 
+import common.vo.PagingVO;
+
 @Service("noteSvc")
 public class NoteSvcImpl implements NoteSvc{
 

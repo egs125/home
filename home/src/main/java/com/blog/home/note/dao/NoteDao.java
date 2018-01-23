@@ -8,6 +8,8 @@ import org.springframework.stereotype.Repository;
 
 import com.blog.home.note.vo.NoteVO;
 
+import common.vo.PagingVO;
+
 @Repository("noteDao")
 public class NoteDao {
 	private static final String NAMESPACE = "noteMapper.";
