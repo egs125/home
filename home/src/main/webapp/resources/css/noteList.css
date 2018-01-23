@@ -18,7 +18,7 @@
 #tablePanel {
 	display : inline-block;
 	margin : 0 auto;
-	height : auto;
+	height : 410px;
 	width : 80%;
 }
 
@@ -42,8 +42,4 @@
 #paging {
 	display : inline-block;
 	margin : 0 auto;
-}
-
-.pagination li : hover{
-	cursor : hand;
 }

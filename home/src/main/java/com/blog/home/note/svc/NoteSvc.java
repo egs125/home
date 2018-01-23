@@ -10,6 +10,8 @@ public interface NoteSvc {
 
 	List<NoteVO> getNoteList();
 
+	List<NoteVO> getNoteList(PagingVO vo);
+	
 	int getTotalCount();
 
 	NoteVO retrieveNote(String sn);
@@ -19,6 +21,7 @@ public interface NoteSvc {
 	int deleteNote(String sn);
 
 	int updateNote(NoteVO vo);
+
 
 
 

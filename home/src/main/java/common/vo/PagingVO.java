@@ -74,11 +74,8 @@ public class PagingVO {
 	public static int getBlockPerPage() {
 		return BLOCK_PER_PAGE;
 	}
-/*	
-	public PagingVO(int curPage) {
-		super();
-		this.curPage = curPage;
-	}*/
+	
+	public PagingVO() {}
 	
 	public PagingVO(int totalCount, int curPage) {
 		super();

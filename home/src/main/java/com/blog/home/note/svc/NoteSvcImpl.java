@@ -20,6 +20,11 @@ public class NoteSvcImpl implements NoteSvc{
 	public List<NoteVO> getNoteList() {
 		return dao.getNoteList();
 	}
+	
+	@Override
+	public List<NoteVO> getNoteList(PagingVO vo) {
+		return dao.getNoteList(vo);
+	}
 
 	@Override
 	public int getTotalCount() {
@@ -46,4 +51,5 @@ public class NoteSvcImpl implements NoteSvc{
 		return dao.updateNote(vo);
 	}
 
+	
 }

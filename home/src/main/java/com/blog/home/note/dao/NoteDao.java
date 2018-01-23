@@ -20,6 +20,10 @@ public class NoteDao {
 	public List<NoteVO> getNoteList() {
 		return sql.selectList(NAMESPACE + "getNoteList");
 	}
+	
+	public List<NoteVO> getNoteList(PagingVO vo) {
+		return sql.selectList(NAMESPACE + "getNoteList", vo);
+	}
 
 	public int getTotalCount() {
 		return sql.selectOne(NAMESPACE + "getTotalCount");

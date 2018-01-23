@@ -31,27 +31,20 @@ public class NoteCtr {
 	}
 	
 	//페이징
-	public PagingVO getPagingVO(int curPage) {
+	@RequestMapping("/setPaging")
+	public @ResponseBody PagingVO setPagingVO(@RequestParam Map<String, Integer> param) {
+		Object obj = param.get("curPage");
+		int page = Integer.valueOf((String) obj);
 		int totalCount = svc.getTotalCount();
-		PagingVO vo = new PagingVO(totalCount, curPage);
+		PagingVO vo = new PagingVO(totalCount, page);
 		return vo;
 	} 
 	
 	//게시물 목록 
 	@RequestMapping("/getNoteList")
-	public @ResponseBody List<NoteVO> getNoteList(Model model, @RequestParam Map<String, Integer> param) throws Exception {
-		System.out.println("########################");
-		System.out.println("curPage : " + param.get("curPage"));
-		Object obj = param.get("curPage");
-		System.out.println(obj.getClass().getName());
-		
-		int page = Integer.valueOf((String) obj);
-		
-		System.out.println("########################");
-		///int curPage =  Integer.valueOf(param.get("curPage"));
-		PagingVO vo = this.getPagingVO(page);
-		List<NoteVO> list = svc.getNoteList();
-		//model.addAttribute("paging", vo);
+	public @ResponseBody List<NoteVO> getNoteList(Model model, @RequestParam Map<String, Integer> param) throws Exception {		
+		PagingVO vo = this.setPagingVO(param);
+		List<NoteVO> list = svc.getNoteList(vo);
 		return list;
 	}
 	

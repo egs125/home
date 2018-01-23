@@ -1,5 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
-<%@ page isELIgnored="false" %>
+<%-- <%@ page isELIgnored="false" %> --%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <!DOCTYPE html>
@@ -29,12 +29,34 @@
 	
 	<div id="main">
 		<div id="tablePanel" class="panel panel-default">
+		<div id="loading">
+			<img src="/home/resources/img/loader.gif" />
+		</div>
 		<table class="table">
-			<tr id="head">
-				<th>#</th>
-				<th>Title</th>
-				<th>Date</th>
-			</tr>
+			<thead>
+				<tr id="head">
+					<th>#</th>
+					<th>Title</th>
+					<th>Date</th>
+				</tr>
+			</thead>
+			
+			<tbody>
+			<c:choose>
+			<c:when test="${list} ne null">
+				<c:forEach var="list" items="${list}">
+				<tr>
+					<td>${list.sn}</td>
+					<td>${list.title}</td>
+					<td>${list.insertDt }</td>
+				</tr>
+				</c:forEach>
+			</c:when>
+			<c:otherwise>
+				<tr><td colspan="3">불러올 글이 없습니다</td></tr>
+			</c:otherwise>
+			</c:choose>
+			</tbody>
 		</table>
 		</div>
 		<br>
@@ -44,29 +66,20 @@
 		</div>
 		</c:if>
 		<br>
-		<div id="loading">
-			<img src="/home/resources/img/loader.gif" />
-		</div>
+		
 		<div id="paging">
 		<nav>
 			<ul class="pagination">
-		    	<li id="prevBtn"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-		    	<li><a href="#">1 <!-- <span class="sr-only">(current)</span> --></a></li>
+		    	<!--<li id="prevBtn"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+		    	 <li><a href="#">1 </a></li>
 		    	<li><a href="#">2 </a></li>
 		    	<li><a href="#">3 </a></li>
 		    	<li><a href="#">4 </a></li>
-		    	<li><a href="#">5 </a></li>
-		    	<li id="nextBtn"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>	    	
+		    	<li><a href="#">5 </a></li> 
+		    	<li id="nextBtn"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>	   --> 	
 			</ul>
 		</nav>
 		</div>	
 	</div>
-	
-	<input type="text" id="curPage" val="${paging.curPage}" />
-	<input type="text" id="curBlock" val="${paging.curBlock}" />
-	<input type="text" id="lastPage" val="${paging.lastPage}" />
-	<input type="text" id="firstPage" val="${paging.firstPage}" />
-	<input type="text" id="totalBlockNum" val="${paging.totalBlockNum}" />
-
 </body>
 </html>

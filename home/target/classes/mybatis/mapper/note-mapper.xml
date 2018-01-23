@@ -20,14 +20,21 @@
   	</select>
   	
   	<!-- 게시물 조회 -->
-	<select id="getNoteList" resultType="note">
-		SELECT SN,
-			   TITLE,
-			   CONTENTS,
-			   SUBSTRING(INSERT_DT, 1, 10) AS INSERT_DT
-		  FROM NOTE
-		 WHERE DELETE_AT = 'N'
-	  ORDER BY SN ASC
+	<select id="getNoteList" parameterType="paging" resultType="note">
+	<![CDATA[
+		SELECT TB.SN,
+			   TB.TITLE,
+			   TB.INSERT_DT
+	      FROM (SELECT SN,
+					   TITLE,
+					   SUBSTRING(INSERT_DT, 1, 10) AS INSERT_DT,
+					   ROW_NUMBER() OVER() 		   AS ROWNO
+				  FROM NOTE
+				 WHERE DELETE_AT = 'N'
+			  ORDER BY SN ASC) 					   AS TB   
+	     WHERE TB.ROWNO >= #{firstNote}
+	       AND TB.ROWNO <= #{lastNote}
+	 ]]>  
 	</select>
 	
 	<!-- 게시물 상세 조회 -->
