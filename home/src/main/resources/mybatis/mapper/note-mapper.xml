@@ -24,7 +24,7 @@
 	<![CDATA[
 		SELECT TB.SN,
 			   TB.TITLE,
-			   TB.INSERT_DT
+			   TB.INSERT_DT 	
 	      FROM (SELECT SN,
 					   TITLE,
 					   SUBSTRING(INSERT_DT, 1, 10) AS INSERT_DT,

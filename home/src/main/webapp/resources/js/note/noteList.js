@@ -55,7 +55,7 @@ function getNoteList(page){
 				for(var i in data){
 					result += "<tr><td>" + data[i].sn + "</td>";
 					result += "<td><a href='readNote?sn=" + data[i].sn + "'>" + data[i].title + "</a></td>";
-					result += "<td>" + data[i].insertDt + "</td></tr>";
+					result += "<td>" + data[i].insert_dt + "</td></tr>";
 				}
 			}else{
 				result = "<tr><td colspan='3'>불러올 글이 없습니다.</td></tr>";
