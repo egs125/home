@@ -8,19 +8,30 @@ $(function(){
 	$("#toWrite").click(function(){
 		location.href="/home/note/writeNoteView";
 	});
-			
-	$("ul").children("li").on("click", function(e){
-		console.log(this);
-		/*var page = $(this).children("a").text().trim();
-		console.log("clicked " + page);*/
-		//getNoteList(page);
-	});
 	
-	/*$("table td").on("click", function(){
-		var sn = $(this td).
-	});*/
+	$("li").on("click", function(e){
+		var page = $(this).text().trim();
+		var curBlock = parseInt($("#curBlock").val());
+		var curPage = parseInt($("#curPage").val());
+		
+		var prevClass = $("#prevBtn").hasClass("disabled");
+		var nextClass = $("#nextBtn").hasClass("disabled");
 
-	
+		var mod = curPage % 5;	
+		if(mod == 0) mod = 5;
+
+		if(page == "«" && prevClass != true){
+			page = curPage - mod;	
+		}else if(page == "«" && prevClass == true){
+			return;
+		}else if(page == "»" && nextClass != true){
+			page = (curPage + 5 - mod) + 1;
+		}else if(page == "»" && nextClass == true){
+			return;
+		}
+		
+		getNoteList(page);
+	});
 });
 
 //테이블 목록 생성 
@@ -42,8 +53,8 @@ function getNoteList(page){
 			
 			if(data.length > 0){
 				for(var i in data){
-					result += "<tr><td><a href='readNote?sn=" + data[i].sn + "'>" + data[i].sn + "</a></td>";
-					result += "<td>" + data[i].title + "</td>";
+					result += "<tr><td>" + data[i].sn + "</td>";
+					result += "<td><a href='readNote?sn=" + data[i].sn + "'>" + data[i].title + "</a></td>";
 					result += "<td>" + data[i].insertDt + "</td></tr>";
 				}
 			}else{
@@ -74,20 +85,26 @@ function setPagingNav(page){
 		dataType : "json", 
 		success : function(data){
 			console.log("setPaging : success");
-			console.log(data.lastPage);
-			var result = '<li id="prevBtn"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>';
-			for(var i = data.firstPage; i < data.lastPage; i++){	
-				result += '<li onclick="getNoteList(' + i + ')"><a href="#">' + i + '</a></li>'; 	
+			
+			$("#curBlock").val(data.curBlock);
+			$("#curPage").val(data.curPage);
+			var index = data.lastPage - data.firstPage + 1;
+			
+			for(var i = 1; i < 6; i++) {
+				var pageNo = data.firstPage;
+				$("li:eq(" + i + ")").removeClass("active");
+				
+				for(var j = 1; j <= index; j++){
+					if(i == j) {
+						$("li:eq(" + j + ")").attr("style", "dislpay:inline-block");
+						$("li:eq(" + j + ")").html('<a href="#">' + pageNo + '</a>');						
+					}
+					++pageNo;
+				}
 			}
-			result += '<li id="nextBtn"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>';
 			
-			$(".pagination").html(result); 
-			
-			if(data.curBlock <= 1)
-				$("#prevBtn").attr("class", "disabled");
-			
-			if(data.totalBlockNum <= data.curBlock)
-				$("#nextBtn").attr("class", "disabled");
+			if(data.curBlock <= 1) $("#prevBtn").attr("class", "disabled");	
+			if(data.totalBlockNum <= data.curBlock) $("#nextBtn").attr("class", "disabled");
 			
 			$("li").each(function(index, item){
 				$(item).removeClass("active");
@@ -95,8 +112,7 @@ function setPagingNav(page){
 				var text = $(item).text().trim();
 				if(text == data.curPage)
 					$(item).attr("class", "active");
-			});
-			
+			});			
 		},
 		error : function(e){
 			console.log("setPaging :error");

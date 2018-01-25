@@ -42,20 +42,6 @@
 			</thead>
 			
 			<tbody>
-			<c:choose>
-			<c:when test="${list} ne null">
-				<c:forEach var="list" items="${list}">
-				<tr>
-					<td>${list.sn}</td>
-					<td>${list.title}</td>
-					<td>${list.insertDt }</td>
-				</tr>
-				</c:forEach>
-			</c:when>
-			<c:otherwise>
-				<tr><td colspan="3">불러올 글이 없습니다</td></tr>
-			</c:otherwise>
-			</c:choose>
 			</tbody>
 		</table>
 		</div>
@@ -70,16 +56,18 @@
 		<div id="paging">
 		<nav>
 			<ul class="pagination">
-		    	<!--<li id="prevBtn"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
-		    	 <li><a href="#">1 </a></li>
-		    	<li><a href="#">2 </a></li>
-		    	<li><a href="#">3 </a></li>
-		    	<li><a href="#">4 </a></li>
-		    	<li><a href="#">5 </a></li> 
-		    	<li id="nextBtn"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>	   --> 	
+				<li id="prevBtn" class="active"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+				<li style="display:none;"><a href="#">1</a></li>
+				<li style="display:none;"><a href="#">2</a></li>
+				<li style="display:none;"><a href="#">3</a></li>
+				<li style="display:none;"><a href="#">4</a></li>
+				<li style="display:none;"><a href="#">5</a></li>
+				<li id="nextBtn" class="active"><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
 			</ul>
 		</nav>
 		</div>	
 	</div>
+	<input type="hidden" id="curBlock" />
+	<input type="hidden" id="curPage" />
 </body>
 </html>

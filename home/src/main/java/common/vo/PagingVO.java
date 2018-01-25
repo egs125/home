@@ -82,6 +82,7 @@ public class PagingVO {
 		
 		this.totalCount = totalCount;
 		this.curPage = curPage;
+		
 		//전체 페이지 수 = 전체 게시물 수 / 페이지 당 게시물 수  -> ceil(전체 게시물 수 / 페이지 당 게시물 수 )
 		int totalPageNum = (int) Math.ceil( (double) totalCount / NOTE_PER_PAGE );
 		this.totalPageNum = totalPageNum;
@@ -91,17 +92,20 @@ public class PagingVO {
 		this.totalBlockNum = totalBlockNum;
 		
 		//현재 페이지블록 번호 = ceil(현재 페이지 번호 / 페이지 당 페이지블록수) 
-		int curBlockNo = (int) Math.ceil( (double) curPage / BLOCK_PER_PAGE );
-		this.curBlock = curBlockNo;
+		int curBlock = (int) Math.ceil( (double) curPage / BLOCK_PER_PAGE );
+		this.curBlock = curBlock;
 		
 		//현재 블럭의 끝 페이지  = 현재 페이지블록 번호 * 페이지 당 페이지 블록 수 
-		int lastPage = curBlockNo * BLOCK_PER_PAGE;
-		this.lastPage = lastPage;
+		int lastPage = curBlock * BLOCK_PER_PAGE;
 		
 		//현제 블럭의 시작 페이지 = 현재 블럭의 끝 페이지 - 페이지 당 페이지 블록 수  + 1
 		int firstPage = lastPage -  BLOCK_PER_PAGE + 1;
 		this.firstPage = firstPage;
-		
+				
+		//게시물 갯수가 적어서 페이지 블록을 5개 생성할 필요가 없는 경우, 총 페이지 수에 맞춰서 페이지 블록 생성
+		if(totalPageNum <= lastPage) lastPage = totalPageNum;	
+		this.lastPage = lastPage;
+			
 		//현재 페이지의 끝 글 번호 = 현재 페이지 * 페이지 당 게시물
 		int lastNote = curPage * NOTE_PER_PAGE;
 		this.lastNote = lastNote;
@@ -132,9 +136,14 @@ public class PagingVO {
 		 */
 	}
 	
-
-	
-	
+	@Override
+	public String toString() {
+		return "getTotalCount : " + getTotalCount() + "\ngetTotalPageNum : " + getTotalPageNum() + 
+				"\ngetTotalBlockNum : " + getTotalBlockNum() + "\ngetCurBlock : " + getCurBlock() + 
+				"\nlastPage : " + getLastNote() + "\ngetFirstPage : " + getFirstPage() + 
+				"\nlastNote : " + getLastNote() + "\ngetFirstNote : " + getFirstNote() + 
+				"\ngetNotePerPage : " + getNotePerPage() + "\ngetBlockPerPage : " + getBlockPerPage();
+	}
 		
 
 }
