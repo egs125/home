@@ -26,7 +26,7 @@ public class NoteCtr {
 	private NoteSvc svc;
 	
 	@RequestMapping("/noteListView")
-	public String noteListView(Model model) {
+	public String noteListView() {
 		return "/note/noteList";
 	}
 	
@@ -42,7 +42,7 @@ public class NoteCtr {
 	
 	//게시물 목록 
 	@RequestMapping("/getNoteList")
-	public @ResponseBody List<NoteVO> getNoteList(Model model, @RequestParam Map<String, Integer> param) throws Exception {		
+	public @ResponseBody List<NoteVO> getNoteList(@RequestParam Map<String, Integer> param) throws Exception {		
 		PagingVO vo = this.setPagingVO(param);
 		List<NoteVO> list = svc.getNoteList(vo);
 		return list;
@@ -58,7 +58,7 @@ public class NoteCtr {
 	
 	//게시물 수정 화면으로 이동
 	@RequestMapping("/updateNoteView")
-	public String updateNoteView(HttpSession session, Model model, @RequestParam(value="sn") String sn) throws Exception {
+	public String updateNoteView(Model model, @RequestParam(value="sn") String sn) throws Exception {
 		NoteVO vo = svc.retrieveNote(sn);
 		model.addAttribute("vo", vo);
 		return "/note/updateNote";
@@ -66,7 +66,7 @@ public class NoteCtr {
 	
 	//게시물 수정
 	@RequestMapping("/updateNote")
-	public @ResponseBody String updateNote(Model model, NoteVO vo) throws Exception {			
+	public @ResponseBody String updateNote(NoteVO vo) throws Exception {			
 		String rtn = "";
 		int result = svc.updateNote(vo);
 		
@@ -89,13 +89,13 @@ public class NoteCtr {
 	
 	//게시물 작성 화면
 	@RequestMapping("/writeNoteView")
-	public String writeNoteView(HttpSession session, Model model) throws Exception {
+	public String writeNoteView() throws Exception {
 		return "/note/writeNote";
 	}
 	
 	//게시물 입력
 	@RequestMapping("/writeNote")
-	public @ResponseBody String writeNote(HttpSession session, Model model, NoteVO vo) throws Exception {
+	public @ResponseBody String writeNote(NoteVO vo) throws Exception {
 		String rtn = "";
 		int result = svc.writeNote(vo);
 		

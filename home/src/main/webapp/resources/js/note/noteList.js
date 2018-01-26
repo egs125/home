@@ -99,20 +99,14 @@ function setPagingNav(page){
 						$("li:eq(" + j + ")").attr("style", "dislpay:inline-block");
 						$("li:eq(" + j + ")").html('<a href="#">' + pageNo + '</a>');						
 					}
-					++pageNo;
+					if(data.curPage == $("li:eq(" + j + ")").text().trim())
+						$("li:eq(" + j + ")").attr("class", "active");
+					++pageNo;				
 				}
 			}
-			
 			if(data.curBlock <= 1) $("#prevBtn").attr("class", "disabled");	
 			if(data.totalBlockNum <= data.curBlock) $("#nextBtn").attr("class", "disabled");
-			
-			$("li").each(function(index, item){
-				$(item).removeClass("active");
-				
-				var text = $(item).text().trim();
-				if(text == data.curPage)
-					$(item).attr("class", "active");
-			});			
+		
 		},
 		error : function(e){
 			console.log("setPaging :error");

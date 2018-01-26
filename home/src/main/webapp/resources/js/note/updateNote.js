@@ -17,6 +17,7 @@ $(function(){
              url         :   "updateNote",
              type        :   "post",
              data        :   params,
+             dataType    : "json",
              success     :   function(data){ 
             	 alert(data);                
              },
